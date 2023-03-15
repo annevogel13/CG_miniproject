@@ -12,6 +12,10 @@ public class collection_of_participants {
 
     }
 
+    /**
+     * Function that adds a participant to the collection of participants
+     * @param p1 : participant that needs to be added to the collection
+     */
     public void add_participant(Participant p1){
 
         if(this.nb_participants+1 <= MAX_PARTICIPANTS) {
@@ -20,6 +24,9 @@ public class collection_of_participants {
         }else System.out.println("Too many participants, remove before you can add new ones");
     }
 
+    /**
+     * Debug function that shows all the participants in the collection that are not null
+     */
     public void show_collection(){
         System.out.println("Participants in this collection : ");
         // can't use the advanced for-each because then it will also try to show the empty places in the collection

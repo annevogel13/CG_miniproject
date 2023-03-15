@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class RangList extends JFrame {
-    // element in the panel
+    // elements in the panel
     private JPanel mainPanel;
     private JButton btnTest;
     private JTextField inputName;
@@ -18,6 +18,9 @@ public class RangList extends JFrame {
     // elements
     collection_of_participants CP;
 
+    /**
+     * Function that creates the output in the outputParticipants JtextArea in the .from file
+     */
     public void GUI_rewriteParticipants() {
 
         String str_collection_of_participants = "";
@@ -30,12 +33,18 @@ public class RangList extends JFrame {
 
     }
 
+    /**
+     * Function that sets the "display values" to the default values
+     */
     public void GUI_set_form_to_empty() {
         inputName.setText("Write here a new name");
         inputMin.setValue(12);
         inputHour.setValue(12);
     }
 
+    /**
+     * Function that validates the input of the form and checks for wrong input and corrects it
+     */
     public void GUI_validate_form() {
 
         String n = inputName.getText();
@@ -64,7 +73,9 @@ public class RangList extends JFrame {
 
     }
 
-
+    /**
+     * Default constructor
+     */
     public RangList() {
 
         this.CP = new collection_of_participants();
