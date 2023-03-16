@@ -1,6 +1,11 @@
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Objects;
 
 public class RangList extends JFrame {
@@ -91,6 +96,29 @@ public class RangList extends JFrame {
             }
         });
 
+        inputHour.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                int value_h = (int) inputHour.getValue();
+
+                if((value_h < 0) || (value_h > 24)){
+                    inputHour.setBackground(Color.red);
+                }else inputHour.setBackground(Color.white);
+
+            }
+        });
+
+        inputMin.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                int value_m = (int) inputMin.getValue();
+
+                if((value_m < 0) || (value_m > 24)){
+                    inputMin.setBackground(Color.red);
+                }else inputHour.setBackground(Color.white);
+
+            }
+        });
     }
 
 
