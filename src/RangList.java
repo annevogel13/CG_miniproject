@@ -101,9 +101,8 @@ public class RangList extends JFrame {
             public void stateChanged(ChangeEvent e) {
                 int value_h = (int) inputHour.getValue();
 
-                if((value_h < 0) || (value_h > 24)){
-                    inputHour.setBackground(Color.red);
-                }else inputHour.setBackground(Color.white);
+                if(value_h < 0) inputHour.setValue(0);
+                if(value_h > 23) inputHour.setValue(24);
 
             }
         });
@@ -113,14 +112,12 @@ public class RangList extends JFrame {
             public void stateChanged(ChangeEvent e) {
                 int value_m = (int) inputMin.getValue();
 
-                if((value_m < 0) || (value_m > 24)){
-                    inputMin.setBackground(Color.red);
-                }else inputHour.setBackground(Color.white);
+                if(value_m < 0) inputMin.setValue(0);
+                if(value_m > 59) inputMin.setValue(60);
 
             }
         });
     }
-
 
     public static void main(String[] args) {
 
@@ -128,7 +125,6 @@ public class RangList extends JFrame {
         RL.setContentPane(RL.mainPanel);
         RL.setSize(500, 500);
         RL.setVisible(true);
-
 
     }
 
