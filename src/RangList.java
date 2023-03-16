@@ -19,14 +19,14 @@ public class RangList extends JFrame {
     collection_of_participants CP;
 
     /**
-     * Function that creates the output in the outputParticipants JtextArea in the .from file
+     * Function that creates the output in the outputParticipants textArea in the .from file
      */
     public void GUI_rewriteParticipants() {
 
         String str_collection_of_participants = "";
 
         for (int i = 0; i < CP.nb_participants; i++) {
-            str_collection_of_participants += CP.collection[i].Name + " on time " + CP.collection[i].timeH + ":" + CP.collection[i].timeM + "\n";
+            str_collection_of_participants += CP.collection[i].Name + " on time " + CP.collection[i].display_time_24h()+ "\n";
         }
 
         outputParticipants.setText(str_collection_of_participants);
@@ -50,15 +50,18 @@ public class RangList extends JFrame {
         String n = inputName.getText();
         int input_h = (int) inputHour.getValue();
         int input_m = (int) inputMin.getValue();
+        String str_warning = warnings.getText();
 
         if ((input_h > 24 || input_h < 0) || (input_m > 60 || input_m < 0)) {
-            warnings.setText("The given time is not within the right bounds");
+            warnings.setText(str_warning + "\nThe given time is not within the right bounds");
             inputMin.setValue(12);
             inputHour.setValue(12);
 
+            // objects.equals is a more advanced way of doing str == str
         } else if ((Objects.equals(n, "Write here a new name")) || (Objects.equals(n, "")) || (Objects.equals(n, " "))) {
-            warnings.setText("The given name is not valid");
-            inputName.setText("Write here your name");
+
+            warnings.setText(str_warning + "\nThe given name is not valid");
+            inputName.setText("Write here a new name");
         } else {
 
             Participant P_tmp = new Participant(n, input_h, input_m);
@@ -66,7 +69,8 @@ public class RangList extends JFrame {
             P_tmp.show_participant();
             CP.add_participant(P_tmp);
 
-            warnings.setText("The participant was added ");
+
+            warnings.setText(str_warning + "\nThe participant was added ");
             GUI_rewriteParticipants();
             GUI_set_form_to_empty();
         }
@@ -96,6 +100,8 @@ public class RangList extends JFrame {
         RL.setContentPane(RL.mainPanel);
         RL.setSize(500, 500);
         RL.setVisible(true);
+
+
     }
 
     private void createUIComponents() {

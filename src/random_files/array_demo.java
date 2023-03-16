@@ -1,3 +1,5 @@
+package random_files;
+
 import java.util.Arrays;
 
 public class array_demo {

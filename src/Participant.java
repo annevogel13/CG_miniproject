@@ -5,7 +5,7 @@ public class Participant {
     String Name ;
     int timeH ;
     int timeM;
-    Date date;
+
 
     /**
      * Default construction
@@ -35,12 +35,26 @@ public class Participant {
 
     }
 
+    String display_time_24h(){
+        String r = "";
+        if(this.timeH < 12){
+            r = "0" + this.timeH;
+        }else r = String.valueOf(this.timeH);
+
+        if(this.timeM < 12){
+            r += ":0" + this.timeM;
+        }else r += ":"+String.valueOf(this.timeM);
+
+        return r ;
+    }
+
+
     /**
      * Debug function that show a participant in the normal way (function has overload with indentation possible)
      */
     void show_participant(){
 
-        System.out.println("Participant " + this.Name + " at time " + this.timeH + ":" + this.timeM);
+        System.out.println("Participant " + this.Name + " at time " + display_time_24h());
 
     }
 }
